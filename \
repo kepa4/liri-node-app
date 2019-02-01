@@ -1,0 +1,44 @@
+require('dotenv').config();
+var Spotify = require('node-spotify-api');
+var keys = require('./keys.js');
+
+var spotify = new Spotify(keys.spotify);
+var input = '';
+
+for (var i = 3; i < process.argv.length; i++) {
+  input += process.argv[i] + ' ';
+}
+
+switch (process.argv[2]) {
+  case 'spotify-this-song':
+    searchSong(input);
+    break;
+  case 'concert-this':
+    searchConcert(input);
+    break;
+  case 'movie-this':
+    searchMovie(input);
+    break;
+  case 'do-what-it-says':
+    doSomething();
+    break;
+  default:
+    console.log(process.argv[2], 'is not a valid command!');
+    break;
+}
+
+function searchSong() {
+  spotify.search(
+    {
+      type: 'track',
+      query: input,
+      limit: 5,
+    },
+    function(err, response) {
+      console.log(response);
+      //console.log(response.tracks.items.name);
+      //console.log(response.tracks.items.preview_url);
+      //console.log(response.tracks.items.album.name);
+    },
+  );
+}
