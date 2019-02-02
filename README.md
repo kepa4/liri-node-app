@@ -28,5 +28,5 @@ Spacing does not matter after the third argument
 `node liri.js movie-this <Movie Name>`
 
 ## ToDos:
-* create defualts for the commands when the user does not have any arguments after the specify which command they're running
+* ~reate defualts for the commands when the user does not have any arguments after the specify which command they're running~
 * create a comand for do-what-it-says which runs the command in random.txt
