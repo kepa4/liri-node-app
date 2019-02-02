@@ -2,6 +2,7 @@ require('dotenv').config();
 var axios = require('axios');
 var Spotify = require('node-spotify-api');
 var keys = require('./keys.js');
+var moment = require('moment');
 
 var spotify = new Spotify(keys.spotify);
 var input = '';
@@ -38,10 +39,10 @@ function searchSong(input) {
       limit: 5,
     },
     function(err, response) {
-      console.log(response.tracks.items[0].artists[0].name);
-      console.log(response.tracks.items[0].name);
-      console.log(response.tracks.items[0].preview_url);
-      console.log(response.tracks.items[0].album.name);
+      console.log('Artist:', response.tracks.items[0].artists[0].name);
+      console.log('Track Name:', response.tracks.items[0].name);
+      console.log('Preview Url:', response.tracks.items[0].preview_url);
+      console.log('Album Name:', response.tracks.items[0].album.name);
     },
   );
 }
@@ -58,8 +59,25 @@ function searchConcert(input) {
       for (var i = 0; i < response.data.length; i++) {
         var data = response.data[i];
         console.log('========================');
-        console.log(data.venue.name);
-        console.log(data.venue.city, data.venue.region, data.venue.country);
+        console.log('Venue:', data.venue.name);
+        console.log('Location:', data.venue.city, data.venue.region, data.venue.country);
+        console.log('Date:', moment(data.datetime).format('MM/DD/YYYY'));
       }
+    });
+}
+
+function searchMovie(input) {
+  var movie = input.replace(' ', '+');
+  axios
+    .get('http://www.omdbapi.com/?apikey=trilogy&t=' + movie)
+    .then(function(response) {
+      console.log('Title:', response.data.Title);
+      console.log('Year:', response.data.Year);
+      console.log('imdb rating:', response.data.imdbRating);
+      console.log(response.data.Ratings[1].Source + ': ' +  response.data.Ratings[1].Value);
+      console.log('Country:', response.data.Country);
+      console.log('Language:', response.data.Language);
+      console.log('Plot:', response.data.Plot);
+      console.log('Actors:', response.data.Actors);
     });
 }
