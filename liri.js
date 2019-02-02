@@ -32,10 +32,15 @@ switch (process.argv[2]) {
 }
 
 function searchSong(input) {
+  var song = input;
+  if (input === '') {
+    song = 'The Sign Ace of Base';
+  }
+  song.replace(' ', '+');
   spotify.search(
     {
       type: 'track',
-      query: input,
+      query: song,
       limit: 5,
     },
     function(err, response) {
@@ -48,7 +53,12 @@ function searchSong(input) {
 }
 
 function searchConcert(input) {
-  var artist = input.replace(' ', '+');
+  var artist = input;
+  if (artist === '') {
+    artist = 'Thrice';
+  } else {
+    artist = artist.replace(' ', '+');
+  }
   axios
     .get(
       'https://rest.bandsintown.com/artists/' +
@@ -60,21 +70,33 @@ function searchConcert(input) {
         var data = response.data[i];
         console.log('========================');
         console.log('Venue:', data.venue.name);
-        console.log('Location:', data.venue.city, data.venue.region, data.venue.country);
+        console.log(
+          'Location:',
+          data.venue.city,
+          data.venue.region,
+          data.venue.country,
+        );
         console.log('Date:', moment(data.datetime).format('MM/DD/YYYY'));
       }
     });
 }
 
 function searchMovie(input) {
-  var movie = input.replace(' ', '+');
+  var movie = input;
+  if (movie === '') {
+    movie = 'Mr. Nobody';
+  }
+  movie.replace(' ', '+');
+  movie.replace('.', '');
   axios
     .get('http://www.omdbapi.com/?apikey=trilogy&t=' + movie)
     .then(function(response) {
       console.log('Title:', response.data.Title);
       console.log('Year:', response.data.Year);
       console.log('imdb rating:', response.data.imdbRating);
-      console.log(response.data.Ratings[1].Source + ': ' +  response.data.Ratings[1].Value);
+      console.log(
+        response.data.Ratings[1].Source + ': ' + response.data.Ratings[1].Value,
+      );
       console.log('Country:', response.data.Country);
       console.log('Language:', response.data.Language);
       console.log('Plot:', response.data.Plot);
