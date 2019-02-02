@@ -16,6 +16,7 @@ SPOTIFY_SECRET=your-spotify-secret
 
 ## Commands
 Spacing does not matter after the third argument
+
 **To get a concert**
 `node liri.js concert-this <Band Name>`
 
