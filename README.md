@@ -7,6 +7,7 @@ npm install
 ```
 
 **In order to use this node application correctly, you will need a spotify application client Id and secret**
+
 **Create a .env file**
 
 create environment variables in .env like so:
