@@ -3,6 +3,7 @@ var axios = require('axios');
 var Spotify = require('node-spotify-api');
 var keys = require('./keys.js');
 var moment = require('moment');
+var fs = require('fs');
 
 var spotify = new Spotify(keys.spotify);
 var input = '';
@@ -102,4 +103,27 @@ function searchMovie(input) {
       console.log('Plot:', response.data.Plot);
       console.log('Actors:', response.data.Actors);
     });
+}
+
+function doSomething(input) {
+	fs.readFile('./random.txt', 'utf-8', function(err, data) {
+		var array = data.split(' ');
+		var song = array.slice(1).join("+");
+		spotify.search(
+    	{
+      	type: 'track',
+      	query: song,
+      	limit: 5,
+    	},
+    	function(err, response) {
+      	console.log('Artist:', response.tracks.items[0].artists[0].name);
+      	console.log('Track Name:', response.tracks.items[0].name);
+     	 	console.log('Preview Url:', response.tracks.items[0].preview_url);
+      	console.log('Album Name:', response.tracks.items[0].album.name);
+    	},
+  	);
+
+		
+	});
+		
 }
