@@ -32,13 +32,13 @@ Spacing does not matter after the third argument
 `node liri.js do-what-it-says`
 
 ## Screenshots 
-![alt text](./pictures/concert-this)
+![alt text](https://raw.githubusercontent.com/kepa4/liri-node-app/3dc5cb1e01bd736825ea4b1f8f205c653d7d9cc9/pictures/concert-this.PNG)
 
-![alt-text](./spotify-this)
+![alt-text](https://raw.githubusercontent.com/kepa4/liri-node-app/3dc5cb1e01bd736825ea4b1f8f205c653d7d9cc9/pictures/spotify-this.PNG)
 
-![alt-text](./movie-this)
+![alt-text](https://raw.githubusercontent.com/kepa4/liri-node-app/3dc5cb1e01bd736825ea4b1f8f205c653d7d9cc9/pictures/movie-this.PNG)
 
-![alt text](./pictures/do-what-it-says)
+![alt text](https://raw.githubusercontent.com/kepa4/liri-node-app/3dc5cb1e01bd736825ea4b1f8f205c653d7d9cc9/pictures/do-what-it-says.PNG)
 
 ## ToDos:
 * ~create defualts for the commands when the user does not have any arguments after the specify which command they're running~
