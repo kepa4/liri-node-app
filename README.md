@@ -28,6 +28,15 @@ Spacing does not matter after the third argument
 **To get movie Information**
 `node liri.js movie-this <Movie Name>`
 
+## Screenshots 
+![alt text](./pictures/concert-this)
+
+![alt-text](./spotify-this)
+
+![alt-text](./movie-this)
+
+![alt text](./pictures/do-what-it-says)
+
 ## ToDos:
 * ~create defualts for the commands when the user does not have any arguments after the specify which command they're running~
 * create a comand for do-what-it-says which runs the command in random.txt
